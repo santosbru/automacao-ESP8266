@@ -38,9 +38,6 @@ void connect()//Funçao para Conectar ao wifi e verificar à conexao.
 }
 
 
-
-
-
  
 void loop()
 {
@@ -68,7 +65,7 @@ void readTel()//Funçao que faz a leitura do Telegram.
       text.toUpperCase();//Converte a STRING_TEXT inteiramente em Maiuscúla.
       
  
-      if (text.indexOf("GARAGEM") > -1)//Caso o texto recebido contenha "ON"
+      if (text.indexOf("GARAGEM") > -1)//Caso o texto recebido contenha "GARAGEM"
       {
          digitalWrite(13, HIGH);//Liga o LED
          bot.sendMessage(id, "Portao Garagem Acionado", "");//Envia uma Mensagem para a pessoa que enviou o Comando.
@@ -76,7 +73,7 @@ void readTel()//Funçao que faz a leitura do Telegram.
          digitalWrite(13,LOW);
       }
  
-      else if (text.indexOf("SOCIAL") > -1)//Caso o texto recebido contenha "OFF"
+      else if (text.indexOf("SOCIAL") > -1)//Caso o texto recebido contenha "SOCIAL"
       {
          digitalWrite(14, HIGH);//Liga o LED
          bot.sendMessage(id, "Portao Social Acionado", "");//Envia uma Mensagem para a pessoa que enviou o Comando.
