@@ -2,14 +2,17 @@
 #include <WiFiClientSecure.h>
 #include <UniversalTelegramBot.h>
 
-#define BOTtoken "952404129:AAGaQAYz53Q1jCy_xaWDyTjk3OY9sSiqWkY"//Define o Token do *seu* BOT
+#define BOTtoken "952404129:AAGaQAYz53Q1jCy_xaWDyTjk3OY9sSiqWkY"//Define o Token do BOT (@Rbonsaibot)
  
-WiFiClientSecure client;
+WiFiClientSecure client;    //Cria um cliente seguro (para ter acesso ao HTTPS)
 UniversalTelegramBot bot(BOTtoken, client);
  
-String id, text;//Váriaveis para armazenamento do ID e TEXTO gerado pelo Usuario
+String id, text;      //Váriaveis para armazenamento do ID e TEXTO gerado pelo Usuario
 unsigned long tempo;
 
+String key = "?key=AIzaSyCdL36YuZP0zSLVvfwTzj4eyoj5cpJDBfE"; //(api key)
+
+//https://docs.google.com/spreadsheets/d/1utN1nvpqmOg8RhKBAvAiMiKajJ80Wxx9lxMJGXixjco/edit?usp=sharing (Link da Planilha)
 
 
 void setup(void)
@@ -72,19 +75,31 @@ void readTel()//Funçao que faz a leitura do Telegram.
          delay(1500);
          digitalWrite(13,LOW);
       }
+
+
+
+
+
+
+      
  
       else if (text.indexOf("SOCIAL") > -1)//Caso o texto recebido contenha "SOCIAL"
       {
          digitalWrite(14, HIGH);//Liga o LED
-         bot.sendMessage(id, "Portao Social Acionado", "");//Envia uma Mensagem para a pessoa que enviou o Comando.
+         bot.sendMessage(id, "Portao Social Acionado"+id, "");//Envia uma Mensagem para a pessoa que enviou o Comando.
+         Serial.println (id);
          delay(1500);
          digitalWrite(14,LOW);
       }
+
+
+
+      
  
       else if (text.indexOf("/START") > -1)//Caso o texto recebido contenha "START"
       {
          //char boasvindas[] = ""
-          bot.sendSimpleMessage(id,"Bem vindo ao Sistema de Automação /n Residencial Bonsai " ,"" );//Envia uma mensagem com seu ID.
+          bot.sendSimpleMessage(id,"Bem vindo ao Sistema de Automação Residencial Bonsai " ,"" );//Envia uma mensagem com seu ID.
           
       }
  
